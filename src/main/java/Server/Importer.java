@@ -7,6 +7,10 @@ import java.io.InputStream;
 import java.net.URL;
 
 public class Importer {
+
+    /*
+    Hämtar en json-fil från en URL och returnerar ett json-objekt av det.
+     */
     private static JsonObject urlToJson (URL url) throws IOException {
         JsonObject obj;
         try (
@@ -17,6 +21,9 @@ public class Importer {
         return obj;
     }
 
+    /*
+    Hämtar ledamöter från Riksdagens hemsida, filtrerar ut namn, parti och länk till en bild från riksdagens API.
+     */
     public static String  importLedamoter() throws IOException {
 
         String urlStr = "http://data.riksdagen.se/personlista/?iid=&fnamn=&enamn=&f_ar=&kn=&parti=&valkrets=&rdlstatus=&org=&utformat=json&sort=parti&sortorder=asc&termlista=";
