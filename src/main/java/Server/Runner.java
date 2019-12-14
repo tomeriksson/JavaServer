@@ -11,7 +11,7 @@ public class Runner {
 
         //Skapar metoden get för URL/ledamoter, returnerar en json-sträng med namn, bild och parti.
         get("/ledamoter", (req, res) -> {
-            return Importer.importLedamoter();
+            return "";
         });
     }
 }
