@@ -33,7 +33,7 @@ public class Importer {
     /*
     Hämtar ledamöter från Riksdagens hemsida, filtrerar ut namn, parti och länk till en bild från riksdagens API.
      */
-    public static void importLedamoter() throws IOException {
+    public static String importLedamoter() throws IOException {
 
         String urlStr = "http://data.riksdagen.se/personlista/?iid=&fnamn=&enamn=&f_ar=&kn=&parti=&valkrets=&rdlstatus=&org=&utformat=json&sort=parti&sortorder=asc&termlista=";
         URL url = new URL(urlStr);
@@ -57,15 +57,12 @@ public class Importer {
         shell.add("ledamoter", outer);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String pretty = gson.toJson(shell);
-
-        BufferedWriter fos = new BufferedWriter(new FileWriter("files/ledamoter.json"));
-        fos.write(pretty);
-        fos.close();
+      return pretty;
     }
 
     public static void main(String[] args) {
         try {
-            Importer.importLedamoter();
+            System.out.println(Importer.importLedamoter());
         } catch (IOException e) {
             e.printStackTrace();
         }

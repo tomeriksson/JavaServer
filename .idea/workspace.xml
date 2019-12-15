@@ -5,6 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Server/Importer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Importer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Server/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Server/Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Server/Converter.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Server/Importer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Server/Importer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Server/Runner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Server/Runner.class" afterDir="false" />
     </list>
@@ -41,6 +42,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Server" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/files" />
+      <recent name="$PROJECT_DIR$/src/main/resources/public" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/Server" />
     </key>
@@ -57,7 +63,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Importer">
+  <component name="RunManager" selected="Application.Runner">
     <configuration name="Importer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Server.Importer" />
       <module name="JavaServer" />
@@ -86,8 +92,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Importer" />
         <item itemvalue="Application.Runner" />
+        <item itemvalue="Application.Importer" />
       </list>
     </recent_temporary>
   </component>
@@ -101,7 +107,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1576326609755</updated>
-      <workItem from="1576326611333" duration="5024000" />
+      <workItem from="1576326611333" duration="8976000" />
+      <workItem from="1576408426684" duration="980000" />
     </task>
     <servers />
   </component>
@@ -113,7 +120,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
