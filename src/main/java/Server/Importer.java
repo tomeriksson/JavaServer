@@ -19,7 +19,6 @@ import java.io.*;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.List;
 
 public class Importer {
 	
@@ -42,8 +41,7 @@ public class Importer {
 	}
 
 	/*
-	 * Hämtar ledamöter från Riksdagens hemsida, filtrerar ut namn, parti och
-	 * länk till en bild från riksdagens API.
+	 * Collects politicians from the Swedish Parliament, filters their name, party and link to image.
 	 */
 	public static String importLedamoter() throws IOException {
 
@@ -120,7 +118,7 @@ public class Importer {
 
 	public static void main(String[] args) {
 		try {
-//			System.out.println(Importer.importLedamoter());
+			System.out.println(Importer.importLedamoter());
 			System.out.println(importTweets("Stefan L�fven"));
 		} catch (IOException | TwitterException e) {
 			e.printStackTrace();
