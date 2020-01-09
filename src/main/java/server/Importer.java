@@ -1,19 +1,15 @@
-package Server;
+package server;
 
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
-//import javax.json.*;
 import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonReader;
 import java.io.*;
 import java.net.URL;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
 
 public class Importer {
 

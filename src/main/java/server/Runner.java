@@ -1,4 +1,4 @@
-package Server;
+package server;
 import java.io.*;
 import static spark.Spark.*;
 
@@ -25,5 +25,6 @@ public class Runner {
             res.status(200);
             return resources[LEDAMOTER];
         });
+        System.out.println("Running on 5000...");
     }
 }
