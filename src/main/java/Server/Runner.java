@@ -12,11 +12,13 @@ public class Runner {
 
     private static void init() throws IOException {
         resources[LEDAMOTER] = Importer.importLedamoter();
+        
         try {
-			resources[TWEETS] = Importer.importTweets("Hanif Bali");
+			resources[TWEETS] = Importer.getTweets("@hanifbali");
 		} catch (TwitterException e) {
 			e.printStackTrace();
 		}
+        
     }
 
     public static void main(String[] args) {

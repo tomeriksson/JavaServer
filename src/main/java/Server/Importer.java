@@ -4,6 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
+import twitter4j.GeoLocation;
+import twitter4j.Place;
 import twitter4j.Query;
 import twitter4j.QueryResult;
 import twitter4j.Status;
@@ -21,9 +23,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 public class Importer {
-	
+
 	private static String urlStr;
-	
+
 	private static ConfigurationBuilder cb;
 	private static TwitterFactory tf;
 
@@ -41,7 +43,8 @@ public class Importer {
 	}
 
 	/*
-	 * Collects politicians from the Swedish Parliament, filters their name, party and link to image.
+	 * Collects politicians from the Swedish Parliament, filters their name, party
+	 * and link to image.
 	 */
 	public static String importLedamoter() throws IOException {
 
@@ -53,28 +56,37 @@ public class Importer {
 		JsonObject inner;
 		com.google.gson.JsonArray outer = new com.google.gson.JsonArray();
 		JsonObject shell = new JsonObject();
-		String namn, parti, bild;
+		String namn, parti, bild, twitterTag, valkrets;
 		for (int i = 0; i < pArr.size(); i++) {
 			inner = new JsonObject();
 			namn = pArr.get(i).asJsonObject().getString("tilltalsnamn") + " "
 					+ pArr.get(i).asJsonObject().getString("efternamn");
 			parti = pArr.get(i).asJsonObject().getString("parti");
 			bild = pArr.get(i).asJsonObject().getString("bild_url_80");
+
+			// Add Twitter-tag
+
+			valkrets = pArr.get(i).asJsonObject().getString("valkrets");
+
 			inner.addProperty("namn", namn);
 			inner.addProperty("parti", parti);
 			inner.addProperty("bild", bild);
+			inner.addProperty("valkrets", valkrets);
 			outer.add(inner);
 		}
+
 		shell.add("ledamoter", outer);
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String pretty = gson.toJson(shell);
 		return pretty;
+
 	}
-	
+
 	/*
-	 * Retrieves tweets from a specified politician. Uses Twitter4j library.
+	 * Retrieves tweets from a specified politician. Uses Twitter4j library to
+	 * integrate our application with the Twitter services.
 	 */
-	public static String importTweets(String keyWords) throws IOException, TwitterException {
+	public static String getTweets(String keyWords) throws IOException, TwitterException {
 		cb = new ConfigurationBuilder();
 		cb.setDebugEnabled(true).setOAuthConsumerKey("5BX8LnhM6Xuc4XIl8zTtQtbZO")
 				.setOAuthConsumerSecret("WYlyvmUZOJr4RC4HK3OQnPGEncPk4kCZUcXhEZkEVsqmzLl1MC")
@@ -83,45 +95,47 @@ public class Importer {
 
 		tf = new TwitterFactory(cb.build());
 		twitter4j.Twitter twitter = tf.getInstance();
-		
-	    Query query = new Query(keyWords);
-	    result = twitter.search(query);
-	    
-	    JsonObject shell = new JsonObject();
-	    com.google.gson.JsonArray outer = new com.google.gson.JsonArray();
-	    String userName, postedAt, tweetText;
-	    
-	    for (Status status : result.getTweets()) {
-	    	
-	        // Build JSON File
-	    	JsonObject inner = new JsonObject();
-	    	
-	    	userName = status.getUser().getScreenName();
-	    	DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");  
-            postedAt = dateFormat.format(status.getCreatedAt());  
-            tweetText = status.getText();
-            
-	    	inner.addProperty("userName", userName);
-	    	inner.addProperty("postedAt", postedAt);
-	    	inner.addProperty("tweetText", tweetText);
-	    	
-	    	outer.add(inner);
-	    	
-	    }
-	    
-	    shell.add("tweets", outer);
+
+		Query query = new Query(keyWords);
+		result = twitter.search(query);
+
+		JsonObject shell = new JsonObject();
+		com.google.gson.JsonArray outer = new com.google.gson.JsonArray();
+		String userName, postedAt, tweetText, userLocation, profileImageURL;
+
+		for (Status status : result.getTweets()) {
+			// Build JSON File
+			JsonObject inner = new JsonObject();
+
+			userName = status.getUser().getScreenName();
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+			postedAt = dateFormat.format(status.getCreatedAt());
+			tweetText = status.getText();
+			userLocation = status.getUser().getLocation();
+			profileImageURL = status.getUser().get400x400ProfileImageURL();
+
+			inner.addProperty("userName", userName);
+			inner.addProperty("postedAt", postedAt);
+			inner.addProperty("tweetText", tweetText);
+			inner.addProperty("userLocation", userLocation);
+			inner.addProperty("profileImageURL", profileImageURL);
+
+			outer.add(inner);
+		}
+		shell.add("tweets", outer);
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 		String JSON = gson.toJson(shell);
 		return JSON;
-		
 	}
 
 	public static void main(String[] args) {
+
 		try {
-			System.out.println(Importer.importLedamoter());
-			System.out.println(importTweets("Stefan Löfven"));
+//			System.out.println(Importer.importLedamoter());
+			System.out.println(getTweets("@hanifbali"));
 		} catch (IOException | TwitterException e) {
 			e.printStackTrace();
 		}
+
 	}
 }
