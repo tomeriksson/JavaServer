@@ -49,7 +49,6 @@ public class Importer {
         String namn, parti, bild, tagg = "null";
         ArrayList<LinkedList<String>> nameAndTagg = importTwittertags();
 
-        System.out.println(nameAndTagg.size());
         for (int i = 0; i < pArr.size(); i++) {
             inner = new JsonObject();
             namn = pArr.get(i).asJsonObject().getString("tilltalsnamn") + " " + pArr.get(i).asJsonObject().getString("efternamn");
