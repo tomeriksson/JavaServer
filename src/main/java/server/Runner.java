@@ -1,4 +1,6 @@
 package server;
+import twitter4j.TwitterException;
+
 import java.io.*;
 import static spark.Spark.*;
 
@@ -6,14 +8,14 @@ public class Runner {
     private static final int LEDAMOTER = 0;
     private static String[] resources = new String[3];
 
-    private static void init() throws IOException {
+    private static void init() throws IOException, TwitterException {
         resources[LEDAMOTER] = Importer.importLedamoter();
     }
 
     public static void main(String[] args) {
         try {
             Runner.init();
-        } catch (IOException e) {
+        } catch (IOException | TwitterException e) {
             e.printStackTrace();
         }
         //Startar servern på port 5000.

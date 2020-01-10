@@ -7,16 +7,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec6d684c-5b2d-44d1-9653-281660f2dd35" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/JavaServer_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_twitter4j_twitter4j_core_4_0_7.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaServer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/JavaServer.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/Importer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Importer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Server/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Runner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/JavaServer.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/Importer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Importer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/JavaServer-1.0-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/JavaServer-1.0-jar-with-dependencies.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/JavaServer-1.0-jar-with-dependencies.jar.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/JavaServer-1.0-sources.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/JavaServer-1.0-sources.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/JavaServer-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/JavaServer-1.0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Server/Importer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Server/Importer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Server/Runner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Server/Runner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +57,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.runner" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -79,8 +81,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Runner">
-    <configuration name="Importer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Importer">
+    <configuration name="Importer" type="Application" factoryName="Application" activateToolWindowBeforeRun="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="server.Importer" />
       <module name="JavaServer" />
       <extension name="coverage">
@@ -106,6 +108,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Importer" />
+      <item itemvalue="Application.Runner" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Runner" />
@@ -134,7 +140,11 @@
       <workItem from="1578573929202" duration="626000" />
       <workItem from="1578574648395" duration="216000" />
       <workItem from="1578576330236" duration="1189000" />
-      <workItem from="1578578272255" duration="227000" />
+      <workItem from="1578578272255" duration="466000" />
+      <workItem from="1578588402630" duration="14000" />
+      <workItem from="1578589155566" duration="3888000" />
+      <workItem from="1578595539244" duration="2918000" />
+      <workItem from="1578654993418" duration="4183000" />
     </task>
     <servers />
   </component>
