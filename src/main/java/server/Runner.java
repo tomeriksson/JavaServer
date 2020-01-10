@@ -23,10 +23,23 @@ public class Runner {
 
         //Skapar metoden get för URL/ledamoter, returnerar en json-sträng med namn, bild och parti.
         get("/ledamoter", (req, res) -> {
+
             res.type("application/json");
             res.status(200);
             return resources[LEDAMOTER];
         });
+        get("/tweets/*", (req, res) -> {
+            String tag = req.splat()[0];
+            if (tag.charAt(0) == '@'){
+                res.type("application/json");
+                res.status(200);
+                return Importer.getTweets(tag);
+            }else{
+                res.status(401);
+                return "not a twitter tag.";
+            }
+        });
+
         System.out.println("Running on 5000...");
     }
 }

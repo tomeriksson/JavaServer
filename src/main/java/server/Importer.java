@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
+import jdk.internal.org.jline.terminal.impl.AbstractWindowsTerminal;
 import twitter4j.*;
 import twitter4j.conf.ConfigurationBuilder;
 
@@ -14,6 +15,8 @@ import javax.json.JsonReader;
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -122,8 +125,54 @@ public class Importer {
             } while ((cursor = users.getNextCursor()) != 0);
             return res;
     }
+    /*
+     * Retrieves tweets from a specified politician. Uses Twitter4j library to
+     * integrate our application with the Twitter services.
+     */
+    public static String getTweets(String keyWords) throws IOException, TwitterException {
+       ConfigurationBuilder cb = new ConfigurationBuilder();
+        cb.setDebugEnabled(true).setOAuthConsumerKey("5BX8LnhM6Xuc4XIl8zTtQtbZO")
+                .setOAuthConsumerSecret("WYlyvmUZOJr4RC4HK3OQnPGEncPk4kCZUcXhEZkEVsqmzLl1MC")
+                .setOAuthAccessToken("1206462660885262336-FsDtNrFoR1cWrS0ueVw2WuseJx8BtK")
+                .setOAuthAccessTokenSecret("OFFipEoXAinyP6oDzAYhpEPMenK79VEyl6VgF6L37KeKc");
 
-        public static void main (String[] args) throws IOException, TwitterException {
+        TwitterFactory tf = new TwitterFactory(cb.build());
+        Twitter twitter = tf.getInstance();
+
+        Query query = new Query(keyWords);
+        QueryResult result = twitter.search(query);
+
+        JsonObject shell = new JsonObject();
+        com.google.gson.JsonArray outer = new com.google.gson.JsonArray();
+        String userName, postedAt, tweetText, userLocation, profileImageURL;
+
+        for (Status status : result.getTweets()) {
+            // Build JSON File
+            JsonObject inner = new JsonObject();
+
+            userName = status.getUser().getScreenName();
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+            postedAt = dateFormat.format(status.getCreatedAt());
+            tweetText = status.getText();
+            userLocation = status.getUser().getLocation();
+            profileImageURL = status.getUser().get400x400ProfileImageURL();
+
+            inner.addProperty("userName", userName);
+            inner.addProperty("postedAt", postedAt);
+            inner.addProperty("tweetText", tweetText);
+            inner.addProperty("userLocation", userLocation);
+            inner.addProperty("profileImageURL", profileImageURL);
+
+            outer.add(inner);
+        }
+        shell.add("tweets", outer);
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        String JSON = gson.toJson(shell);
+        return JSON;
+    }
+
+
+    public static void main (String[] args) throws IOException, TwitterException {
             System.out.println(importLedamoter());
 
         }
