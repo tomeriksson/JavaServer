@@ -38,6 +38,7 @@ public class Runner {
             res.status(200);
             return resources[LEDAMOTER];
         });
+        //Skapar metoden get för URL/tweets/@<twittertag> som hämtar tweets utifrån en viss tag.
         get("/tweets/*", (req, res) -> {
             String tag = req.splat()[0];
             if (tag.charAt(0) == '@'){

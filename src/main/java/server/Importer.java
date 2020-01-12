@@ -108,6 +108,9 @@ public class Importer {
         return pretty;
     }
 
+    /*
+     * Hämtar användare från en medlemslista på twitter och parar ihop namn på konton med namn på riksdagsledamöter.
+     */
     private static ArrayList<LinkedList<String>> importTwittertags() throws IOException, TwitterException {
             ConfigurationBuilder cb = new ConfigurationBuilder();
             cb.setDebugEnabled(true).setOAuthConsumerKey("5BX8LnhM6Xuc4XIl8zTtQtbZO")
