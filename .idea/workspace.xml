@@ -9,7 +9,6 @@
     <list default="true" id="ec6d684c-5b2d-44d1-9653-281660f2dd35" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/Importer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Importer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Runner.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/JavaServer-1.0-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/JavaServer-1.0-jar-with-dependencies.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/JavaServer-1.0-sources.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/JavaServer-1.0-sources.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/JavaServer-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/JavaServer-1.0.jar" afterDir="false" />
@@ -75,7 +74,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Runner">
+  <component name="RunManager" selected="Application.Importer">
     <configuration name="Importer" type="Application" factoryName="Application" activateToolWindowBeforeRun="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="server.Importer" />
       <module name="JavaServer" />

@@ -49,7 +49,7 @@ public class Importer {
         JsonObject inner;
         com.google.gson.JsonArray outer = new com.google.gson.JsonArray();
         JsonObject shell = new JsonObject();
-        String id, namn, parti, bild, bild_stor, tagg = null, status, valkrets;
+        String id, namn, parti, bild, bild_stor, tagg = null, status, valkrets, fodd, kon;
         ArrayList<LinkedList<String>> nameAndTagg = importTwittertags();
 
         for (int i = 0; i < pArr.size(); i++) {
@@ -61,6 +61,8 @@ public class Importer {
             bild_stor = pArr.get(i).asJsonObject().getString("bild_url_192");
             valkrets = pArr.get(i).asJsonObject().getString("valkrets");
             status = pArr.get(i).asJsonObject().getString("status");
+            fodd = pArr.get(i).asJsonObject().getString("fodd_ar");
+            kon = pArr.get(i).asJsonObject().getString("kon");
             int counter = 0;
             for (int j = 0; j < nameAndTagg.size(); j++){
                  LinkedList<String> row = nameAndTagg.get(j);
@@ -70,23 +72,35 @@ public class Importer {
                 String tag = row.getLast();
                 if (counter == row.size()-1){
                     tagg = tag;
+                    inner.addProperty("id", id);
+                    inner.addProperty("namn", namn);
+                    inner.addProperty("parti", parti);
+                    inner.addProperty("bild", bild);
+                    inner.addProperty("bild_stor", bild_stor);
+                    inner.addProperty("tagg", tagg);
+                    inner.addProperty("valkrets", valkrets);
+                    inner.addProperty("status", status);
+                    inner.addProperty("fodd", fodd);
+                    inner.addProperty("kon", kon);
+                    outer.add(inner);
                 }else{
                     if (namn.contains(tag)){
                         tagg = tag;
+                        inner.addProperty("id", id);
+                        inner.addProperty("namn", namn);
+                        inner.addProperty("parti", parti);
+                        inner.addProperty("bild", bild);
+                        inner.addProperty("bild_stor", bild_stor);
+                        inner.addProperty("tagg", tagg);
+                        inner.addProperty("valkrets", valkrets);
+                        inner.addProperty("status", status);
+                        inner.addProperty("fodd", fodd);
+                        inner.addProperty("kon", kon);
+                        outer.add(inner);
                     }
                 }
                 counter = 0;
             }
-            inner.addProperty("id", id);
-            inner.addProperty("namn", namn);
-            inner.addProperty("parti", parti);
-            inner.addProperty("bild", bild);
-            inner.addProperty("bild_stor", bild_stor);
-            inner.addProperty("tagg", tagg);
-            inner.addProperty("valkrets", valkrets);
-            inner.addProperty("status", status);
-            outer.add(inner);
-            tagg = "null";
         }
         shell.add("ledamoter", outer);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
