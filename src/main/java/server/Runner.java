@@ -2,6 +2,10 @@ package server;
 import twitter4j.TwitterException;
 
 import java.io.*;
+
+import spark.Filter;
+import spark.Spark;
+
 import static spark.Spark.*;
 
 public class Runner {
@@ -20,6 +24,12 @@ public class Runner {
         }
         //Startar servern på port 5000.
         port(5000);
+        
+        Spark.after((Filter) (req, res) -> {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Methods", "GET");
+        });
+
 
         //Skapar metoden get för URL/ledamoter, returnerar en json-sträng med namn, bild och parti.
         get("/ledamoter", (req, res) -> {

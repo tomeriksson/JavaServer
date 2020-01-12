@@ -49,14 +49,18 @@ public class Importer {
         JsonObject inner;
         com.google.gson.JsonArray outer = new com.google.gson.JsonArray();
         JsonObject shell = new JsonObject();
-        String namn, parti, bild, tagg = "null";
+        String id, namn, parti, bild, bild_stor, tagg = null, status, valkrets;
         ArrayList<LinkedList<String>> nameAndTagg = importTwittertags();
 
         for (int i = 0; i < pArr.size(); i++) {
             inner = new JsonObject();
+            id = pArr.get(i).asJsonObject().getString("intressent_id");
             namn = pArr.get(i).asJsonObject().getString("tilltalsnamn") + " " + pArr.get(i).asJsonObject().getString("efternamn");
             parti = pArr.get(i).asJsonObject().getString("parti");
             bild = pArr.get(i).asJsonObject().getString("bild_url_80");
+            bild_stor = pArr.get(i).asJsonObject().getString("bild_url_192");
+            valkrets = pArr.get(i).asJsonObject().getString("valkrets");
+            status = pArr.get(i).asJsonObject().getString("status");
             int counter = 0;
             for (int j = 0; j < nameAndTagg.size(); j++){
                  LinkedList<String> row = nameAndTagg.get(j);
@@ -73,10 +77,14 @@ public class Importer {
                 }
                 counter = 0;
             }
+            inner.addProperty("id", id);
             inner.addProperty("namn", namn);
             inner.addProperty("parti", parti);
             inner.addProperty("bild", bild);
+            inner.addProperty("bild_stor", bild_stor);
             inner.addProperty("tagg", tagg);
+            inner.addProperty("valkrets", valkrets);
+            inner.addProperty("status", status);
             outer.add(inner);
             tagg = "null";
         }
