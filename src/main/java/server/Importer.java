@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
-import jdk.internal.org.jline.terminal.impl.AbstractWindowsTerminal;
 import twitter4j.*;
 import twitter4j.conf.ConfigurationBuilder;
 
@@ -13,12 +12,10 @@ import javax.json.Json;
 import javax.json.JsonArray;
 import javax.json.JsonReader;
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.LinkedList;
 
 public class Importer {
