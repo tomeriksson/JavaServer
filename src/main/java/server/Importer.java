@@ -4,9 +4,9 @@ package server;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-
-import twitter4j.*;
-import twitter4j.conf.ConfigurationBuilder;
+import oauth.signpost.exception.OAuthCommunicationException;
+import oauth.signpost.exception.OAuthExpectationFailedException;
+import oauth.signpost.exception.OAuthMessageSignerException;
 
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -17,6 +17,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Importer {
 
@@ -36,7 +37,7 @@ public class Importer {
     /*
     Hämtar ledamöter från Riksdagens hemsida, filtrerar ut namn, parti och länk till en bild från riksdagens API.
      */
-    public static String importLedamoter() throws IOException, TwitterException {
+    public static String importLedamoter() throws IOException, OAuthCommunicationException, OAuthExpectationFailedException, OAuthMessageSignerException {
 
         String urlStr = "http://data.riksdagen.se/personlista/?iid=&fnamn=&enamn=&f_ar=&kn=&parti=&valkrets=&rdlstatus=&org=&utformat=json&sort=parti&sortorder=asc&termlista=";
         URL url = new URL(urlStr);
@@ -108,76 +109,58 @@ public class Importer {
     /*
      * Hämtar användare från en medlemslista på twitter och parar ihop namn på konton med namn på riksdagsledamöter.
      */
-    private static ArrayList<LinkedList<String>> importTwittertags() throws IOException, TwitterException {
-            ConfigurationBuilder cb = new ConfigurationBuilder();
-            cb.setDebugEnabled(true).setOAuthConsumerKey("5BX8LnhM6Xuc4XIl8zTtQtbZO")
-                    .setOAuthConsumerSecret("WYlyvmUZOJr4RC4HK3OQnPGEncPk4kCZUcXhEZkEVsqmzLl1MC")
-                    .setOAuthAccessToken("1206462660885262336-FsDtNrFoR1cWrS0ueVw2WuseJx8BtK")
-                    .setOAuthAccessTokenSecret("OFFipEoXAinyP6oDzAYhpEPMenK79VEyl6VgF6L37KeKc");
-        ArrayList<String[]> twitterList = new ArrayList<String[]>();
-            TwitterFactory tf = new TwitterFactory(cb.build());
-            Twitter twitter = tf.getInstance();
-            long cursor = -1;
-            PagableResponseList<User> users;
-       ArrayList<LinkedList<String>> res = new ArrayList<>();
-            do {
-                users = twitter.getUserListMembers(Long.parseLong("1042387432266772480"), cursor);
+    private static ArrayList<LinkedList<String>> importTwittertags() throws IOException, OAuthCommunicationException, OAuthExpectationFailedException, OAuthMessageSignerException {
+        Twitter4Johan t4j = new Twitter4Johan("5BX8LnhM6Xuc4XIl8zTtQtbZO", "WYlyvmUZOJr4RC4HK3OQnPGEncPk4kCZUcXhEZkEVsqmzLl1MC",
+                "1206462660885262336-FsDtNrFoR1cWrS0ueVw2WuseJx8BtK", "OFFipEoXAinyP6oDzAYhpEPMenK79VEyl6VgF6L37KeKc");
+        ArrayList<LinkedList<String>> res = new ArrayList<>();
+               List<String[]> users = t4j.getTwitterTags("1042387432266772480");
+
                 String namn;
                 String twitterTag;
                 for (int i = 0; i < users.size(); i++) {
-                    User u = users.get(i);
-                    namn = u.getName();
-                    twitterTag = u.getScreenName();
+                    twitterTag = users.get(i)[0];
+                    namn = users.get(i)[1];
                     // ttnamn
                     String[] a = namn.split(" ");
 
                     LinkedList<String> elem = new LinkedList<>();
-                    for (int j = 0; j < a.length; j++){
-                            String gNamn = a[j];
-                            char first = gNamn.charAt(0);
-                            elem.add(Character.toTitleCase(first) + gNamn.substring(1));
+                    for (int j = 0; j < a.length; j++) {
+                        String gNamn = a[j];
+                        char first = gNamn.charAt(0);
+                        elem.add(Character.toTitleCase(first) + gNamn.substring(1));
                     }
-                    if(!twitterTag.isEmpty()){
+                    if (!twitterTag.isEmpty()) {
                         elem.add("@" + twitterTag);
-                    }else {
+                    } else {
                         elem.add(null);
                     }
                     res.add(elem);
                 }
-            } while ((cursor = users.getNextCursor()) != 0);
             return res;
     }
     /*
      * Retrieves tweets from a specified politician. Uses Twitter4j library to
      * integrate our application with the Twitter services.
      */
-    public static String getTweets(String keyWords) throws IOException, TwitterException {
-       ConfigurationBuilder cb = new ConfigurationBuilder();
-        cb.setDebugEnabled(true).setOAuthConsumerKey("5BX8LnhM6Xuc4XIl8zTtQtbZO")
-                .setOAuthConsumerSecret("WYlyvmUZOJr4RC4HK3OQnPGEncPk4kCZUcXhEZkEVsqmzLl1MC")
-                .setOAuthAccessToken("1206462660885262336-FsDtNrFoR1cWrS0ueVw2WuseJx8BtK")
-                .setOAuthAccessTokenSecret("OFFipEoXAinyP6oDzAYhpEPMenK79VEyl6VgF6L37KeKc");
-
-        TwitterFactory tf = new TwitterFactory(cb.build());
-        Twitter twitter = tf.getInstance();
-
-        Query query = new Query(keyWords);
-        QueryResult result = twitter.search(query);
+    public static String getTweets(String keyWords) throws IOException, OAuthCommunicationException, OAuthExpectationFailedException, OAuthMessageSignerException {
+        Twitter4Johan t4j = new Twitter4Johan("5BX8LnhM6Xuc4XIl8zTtQtbZO", "WYlyvmUZOJr4RC4HK3OQnPGEncPk4kCZUcXhEZkEVsqmzLl1MC",
+                "1206462660885262336-FsDtNrFoR1cWrS0ueVw2WuseJx8BtK", "OFFipEoXAinyP6oDzAYhpEPMenK79VEyl6VgF6L37KeKc");
+        List<TStatus> tweets = t4j.getTweets(keyWords);
 
         JsonObject shell = new JsonObject();
         com.google.gson.JsonArray outer = new com.google.gson.JsonArray();
         String userName, postedAt, tweetText, userLocation, profileImageURL;
 
-        for (Status status : result.getTweets()) {
+        for (TStatus tweet : tweets) {
             // Build JSON File
             JsonObject inner = new JsonObject();
 
-            userName = status.getUser().getScreenName();
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-            postedAt = dateFormat.format(status.getCreatedAt());
-            tweetText = status.getText();
-            userLocation = status.getUser().getLocation();
-            profileImageURL = status.getUser().get400x400ProfileImageURL();
+            userName = tweet.getScreenName();
+
+            postedAt = tweet.getCreateDate();
+            tweetText = tweet.getText();
+            userLocation = tweet.getUserLocation();
+            profileImageURL = tweet.getUserProfileImage();
 
             inner.addProperty("userName", userName);
             inner.addProperty("postedAt", postedAt);
@@ -194,8 +177,8 @@ public class Importer {
     }
 
 
-    public static void main (String[] args) throws IOException, TwitterException {
-            System.out.println(importLedamoter());
+    public static void main (String[] args) throws IOException, OAuthCommunicationException, OAuthExpectationFailedException, OAuthMessageSignerException {
+        System.out.println(getTweets("hanifbali"));
 
         }
 }

@@ -1,4 +1,7 @@
 package server;
+import oauth.signpost.exception.OAuthCommunicationException;
+import oauth.signpost.exception.OAuthExpectationFailedException;
+import oauth.signpost.exception.OAuthMessageSignerException;
 import twitter4j.TwitterException;
 
 import java.io.*;
@@ -12,14 +15,14 @@ public class Runner {
     private static final int LEDAMOTER = 0;
     private static String[] resources = new String[3];
 
-    private static void init() throws IOException, TwitterException {
-        resources[LEDAMOTER] = Importer.importLedamoter();
+    private static void init() throws IOException, OAuthCommunicationException, OAuthExpectationFailedException, OAuthMessageSignerException {
+       resources[LEDAMOTER] = Importer.importLedamoter();
     }
 
     public static void main(String[] args) {
         try {
             Runner.init();
-        } catch (IOException | TwitterException e) {
+        } catch (IOException | OAuthCommunicationException | OAuthExpectationFailedException | OAuthMessageSignerException e) {
             e.printStackTrace();
         }
         //Startar servern på port 5000.
@@ -44,7 +47,7 @@ public class Runner {
             if (tag.charAt(0) == '@'){
                 res.type("application/json");
                 res.status(200);
-                return Importer.getTweets(tag);
+                return Importer.getTweets(tag.substring(1));
             }else{
                 res.status(401);
                 return "not a twitter tag.";

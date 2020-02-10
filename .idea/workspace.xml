@@ -7,23 +7,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ec6d684c-5b2d-44d1-9653-281660f2dd35" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_codec_commons_codec_1_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_io_commons_io_2_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__oauth_signpost_signpost_commonshttp4_1_2_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__oauth_signpost_signpost_core_1_2_1_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpclient_4_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_httpcomponents_httpcore_4_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaServer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/JavaServer.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/Importer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Importer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Runner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/TwitterToJSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Twitter4Johan.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/JavaServer-1.0-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/JavaServer-1.0-jar-with-dependencies.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/JavaServer-1.0-sources.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/JavaServer-1.0-sources.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/JavaServer-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/JavaServer-1.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Server/Importer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Server/Importer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Server/Runner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Server/Runner.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,7 +70,7 @@
       <recent name="$PROJECT_DIR$/src/Server" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.TwitterToJSON">
+  <component name="RunManager" selected="Application.Runner">
     <configuration name="Importer" type="Application" factoryName="Application" activateToolWindowBeforeRun="false" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="server.Importer" />
       <module name="JavaServer" />
@@ -107,8 +97,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TwitterToJSON" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="server.TwitterToJSON" />
+    <configuration name="Twitter4Johan" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="server.Twitter4Johan" />
       <module name="JavaServer" />
       <extension name="coverage">
         <pattern>
@@ -123,11 +113,11 @@
     <list>
       <item itemvalue="Application.Importer" />
       <item itemvalue="Application.Runner" />
-      <item itemvalue="Application.TwitterToJSON" />
+      <item itemvalue="Application.Twitter4Johan" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TwitterToJSON" />
+        <item itemvalue="Application.Twitter4Johan" />
         <item itemvalue="Application.Runner" />
         <item itemvalue="Application.Importer" />
       </list>
@@ -161,7 +151,7 @@
       <workItem from="1578654993418" duration="5111000" />
       <workItem from="1578850836351" duration="1199000" />
       <workItem from="1578936206371" duration="8000" />
-      <workItem from="1581341137247" duration="7365000" />
+      <workItem from="1581341137247" duration="14060000" />
     </task>
     <servers />
   </component>
@@ -182,6 +172,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser" timestamp="1581355008290">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="533" y="173" key="#com.intellij.ide.util.MemberChooser/0.0.1440.900@0.0.1440.900" timestamp="1581355008290" />
     <state x="69" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1581345472271">
       <screen x="0" y="23" width="1440" height="810" />
     </state>
@@ -190,26 +184,26 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1581348869112" />
-    <state width="1398" height="143" key="GridCell.Tab.0.bottom" timestamp="1581352656977">
+    <state width="1398" height="266" key="GridCell.Tab.0.bottom" timestamp="1581365971867">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="143" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581352656977" />
-    <state width="1398" height="143" key="GridCell.Tab.0.bottom/0.23.1440.810@0.23.1440.810" timestamp="1581352579123" />
-    <state width="1398" height="143" key="GridCell.Tab.0.center" timestamp="1581352656975">
+    <state width="1398" height="266" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581365971867" />
+    <state width="1398" height="266" key="GridCell.Tab.0.bottom/0.23.1440.810@0.23.1440.810" timestamp="1581365408295" />
+    <state width="1398" height="266" key="GridCell.Tab.0.center" timestamp="1581365971864">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="143" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581352656975" />
-    <state width="1398" height="143" key="GridCell.Tab.0.center/0.23.1440.810@0.23.1440.810" timestamp="1581352579118" />
-    <state width="1398" height="143" key="GridCell.Tab.0.left" timestamp="1581352656973">
+    <state width="1398" height="266" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581365971864" />
+    <state width="1398" height="266" key="GridCell.Tab.0.center/0.23.1440.810@0.23.1440.810" timestamp="1581365408293" />
+    <state width="1398" height="266" key="GridCell.Tab.0.left" timestamp="1581365971863">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="143" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581352656973" />
-    <state width="1398" height="143" key="GridCell.Tab.0.left/0.23.1440.810@0.23.1440.810" timestamp="1581352579109" />
-    <state width="1398" height="143" key="GridCell.Tab.0.right" timestamp="1581352656976">
+    <state width="1398" height="266" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581365971863" />
+    <state width="1398" height="266" key="GridCell.Tab.0.left/0.23.1440.810@0.23.1440.810" timestamp="1581365408290" />
+    <state width="1398" height="266" key="GridCell.Tab.0.right" timestamp="1581365971865">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="143" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581352656976" />
-    <state width="1398" height="143" key="GridCell.Tab.0.right/0.23.1440.810@0.23.1440.810" timestamp="1581352579120" />
+    <state width="1398" height="266" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581365971865" />
+    <state width="1398" height="266" key="GridCell.Tab.0.right/0.23.1440.810@0.23.1440.810" timestamp="1581365408294" />
     <state x="258" y="90" key="Maven.ArtifactSearchDialog" timestamp="1581344851377">
       <screen x="0" y="23" width="1440" height="810" />
     </state>
