@@ -1,13 +1,13 @@
 package server;
 
-public class TStatus {
+public class Status {
     private String screenName;
     private String createDate;
     private String text;
     private String userLocation;
     private String userProfileImage;
 
-    public TStatus(String screenName, String createDate, String text, String userLocation, String userProfileImage) {
+    public Status(String screenName, String createDate, String text, String userLocation, String userProfileImage) {
         this.screenName = screenName;
         this.createDate = createDate;
         this.text = text;

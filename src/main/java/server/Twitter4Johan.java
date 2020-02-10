@@ -22,7 +22,6 @@ public class Twitter4Johan {
     private String accessTokenStr;
     private String accessTokenSecretStr;
     private OAuthConsumer oAuthConsumer;
-    private String listId = "1042387432266772480";
 
     public Twitter4Johan(String consumerKeyStr, String consumerSecretStr, String accessTokenStr, String accessTokenSecretStr){
         this.consumerKeyStr = consumerKeyStr;
@@ -38,8 +37,6 @@ public class Twitter4Johan {
         oAuthConsumer.sign(req);
         HttpClient httpClient = new DefaultHttpClient();
         HttpResponse httpResponse = httpClient.execute(req);
-       // int statusCode = httpResponse.getStatusLine().getStatusCode();
-        //System.out.println(statusCode + ':' + httpResponse.getStatusLine().getReasonPhrase());
         return IOUtils.toString(httpResponse.getEntity().getContent());
     }
 
@@ -53,8 +50,8 @@ public class Twitter4Johan {
         return tags;
     }
 
-    public List<TStatus> getTweets(String username) throws OAuthExpectationFailedException, OAuthCommunicationException, OAuthMessageSignerException, IOException {
-        ArrayList<TStatus> tweets = new ArrayList<TStatus>();
+    public List<Status> getTweets(String username) throws OAuthExpectationFailedException, OAuthCommunicationException, OAuthMessageSignerException, IOException {
+        ArrayList<Status> tweets = new ArrayList<Status>();
         JSONObject jo = new JSONObject(get("https://api.twitter.com/1.1/search/tweets.json?q=%40" + username));
         JSONArray ja = jo.getJSONArray("statuses");
         for (int i = 0; i < ja.length(); i++){
@@ -64,7 +61,7 @@ public class Twitter4Johan {
             String text = temp.getString("text");
             String location = temp.getJSONObject("user").getString("location");
             String profilePicture = temp.getJSONObject("user").getString("profile_image_url_https");
-            tweets.add(new TStatus(author, createdDate, text, location, profilePicture));
+            tweets.add(new Status(author, createdDate, text, location, profilePicture));
         }
         return tweets;
     }

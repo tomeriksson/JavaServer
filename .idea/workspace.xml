@@ -9,12 +9,8 @@
     <list default="true" id="ec6d684c-5b2d-44d1-9653-281660f2dd35" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/server/Importer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Importer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/Runner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Runner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/server/TwitterToJSON.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Twitter4Johan.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/JavaServer-1.0-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/JavaServer-1.0-jar-with-dependencies.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/JavaServer-1.0-sources.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/JavaServer-1.0-sources.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/JavaServer-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/JavaServer-1.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/TStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Status.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/server/Twitter4Johan.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/server/Twitter4Johan.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +147,7 @@
       <workItem from="1578654993418" duration="5111000" />
       <workItem from="1578850836351" duration="1199000" />
       <workItem from="1578936206371" duration="8000" />
-      <workItem from="1581341137247" duration="14060000" />
+      <workItem from="1581341137247" duration="14549000" />
     </task>
     <servers />
   </component>
@@ -184,29 +180,33 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1581348869112" />
-    <state width="1398" height="266" key="GridCell.Tab.0.bottom" timestamp="1581365971867">
+    <state width="1398" height="107" key="GridCell.Tab.0.bottom" timestamp="1581366566167">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="266" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581365971867" />
+    <state width="1398" height="107" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1581366566167" />
     <state width="1398" height="266" key="GridCell.Tab.0.bottom/0.23.1440.810@0.23.1440.810" timestamp="1581365408295" />
-    <state width="1398" height="266" key="GridCell.Tab.0.center" timestamp="1581365971864">
+    <state width="1398" height="107" key="GridCell.Tab.0.center" timestamp="1581366566166">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="266" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581365971864" />
+    <state width="1398" height="107" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1581366566166" />
     <state width="1398" height="266" key="GridCell.Tab.0.center/0.23.1440.810@0.23.1440.810" timestamp="1581365408293" />
-    <state width="1398" height="266" key="GridCell.Tab.0.left" timestamp="1581365971863">
+    <state width="1398" height="107" key="GridCell.Tab.0.left" timestamp="1581366566165">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="266" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581365971863" />
+    <state width="1398" height="107" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1581366566165" />
     <state width="1398" height="266" key="GridCell.Tab.0.left/0.23.1440.810@0.23.1440.810" timestamp="1581365408290" />
-    <state width="1398" height="266" key="GridCell.Tab.0.right" timestamp="1581365971865">
+    <state width="1398" height="107" key="GridCell.Tab.0.right" timestamp="1581366566166">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state width="1398" height="266" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581365971865" />
+    <state width="1398" height="107" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1581366566166" />
     <state width="1398" height="266" key="GridCell.Tab.0.right/0.23.1440.810@0.23.1440.810" timestamp="1581365408294" />
     <state x="258" y="90" key="Maven.ArtifactSearchDialog" timestamp="1581344851377">
       <screen x="0" y="23" width="1440" height="810" />
     </state>
     <state x="258" y="90" key="Maven.ArtifactSearchDialog/0.23.1440.810@0.23.1440.810" timestamp="1581344851377" />
+    <state x="413" y="282" key="com.intellij.ide.util.TipDialog" timestamp="1581366686681">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="413" y="282" key="com.intellij.ide.util.TipDialog/0.0.1440.900@0.0.1440.900" timestamp="1581366686681" />
   </component>
 </project>

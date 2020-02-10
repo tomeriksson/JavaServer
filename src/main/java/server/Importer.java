@@ -13,8 +13,6 @@ import javax.json.JsonArray;
 import javax.json.JsonReader;
 import java.io.*;
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -145,13 +143,13 @@ public class Importer {
     public static String getTweets(String keyWords) throws IOException, OAuthCommunicationException, OAuthExpectationFailedException, OAuthMessageSignerException {
         Twitter4Johan t4j = new Twitter4Johan("5BX8LnhM6Xuc4XIl8zTtQtbZO", "WYlyvmUZOJr4RC4HK3OQnPGEncPk4kCZUcXhEZkEVsqmzLl1MC",
                 "1206462660885262336-FsDtNrFoR1cWrS0ueVw2WuseJx8BtK", "OFFipEoXAinyP6oDzAYhpEPMenK79VEyl6VgF6L37KeKc");
-        List<TStatus> tweets = t4j.getTweets(keyWords);
+        List<Status> tweets = t4j.getTweets(keyWords);
 
         JsonObject shell = new JsonObject();
         com.google.gson.JsonArray outer = new com.google.gson.JsonArray();
         String userName, postedAt, tweetText, userLocation, profileImageURL;
 
-        for (TStatus tweet : tweets) {
+        for (Status tweet : tweets) {
             // Build JSON File
             JsonObject inner = new JsonObject();
 
