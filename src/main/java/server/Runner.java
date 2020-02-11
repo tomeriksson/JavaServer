@@ -41,17 +41,28 @@ public class Runner {
             res.status(200);
             return resources[LEDAMOTER];
         });
+
+        get("/ledamot", (req, res) -> {
+            res.type("application/json");
+            res.status(400);
+            return "Error code: 400; Bad request code (No single member of parlament available, try /ledamoter)";
+        });
+
         //Skapar metoden get för URL/tweets/@<twittertag> som hämtar tweets utifrån en viss tag.
         get("/tweets/*", (req, res) -> {
             String tag = req.splat()[0];
-            if (tag.charAt(0) == '@'){
+            if (tag.charAt(0) == '@' && tag.length() > 1){
                 res.type("application/json");
                 res.status(200);
                 return Importer.getTweets(tag.substring(1));
             }else{
-                res.status(401);
-                return "not a twitter tag.";
+                res.status(400);
+                return "Error code: 400; Bad request code (Not a twitter tag).";
             }
+        });
+        get("/tweets/", (req, res) -> {
+            res.status(400);
+            return "Error code: 400; Bad request code (Specify twitter tag (/tweets/@a_Twitter_tag)).";
         });
 
         System.out.println("Running on 5000...");
