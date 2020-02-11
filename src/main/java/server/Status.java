@@ -1,5 +1,8 @@
 package server;
 
+/**
+ * Simple representation of a Twitter-status update.
+ */
 public class Status {
     private String screenName;
     private String createDate;

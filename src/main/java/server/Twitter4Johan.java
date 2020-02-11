@@ -1,7 +1,6 @@
 package server;
 import oauth.signpost.OAuthConsumer;
 import oauth.signpost.commonshttp.CommonsHttpOAuthConsumer;
-
 import oauth.signpost.exception.OAuthCommunicationException;
 import oauth.signpost.exception.OAuthExpectationFailedException;
 import oauth.signpost.exception.OAuthMessageSignerException;
@@ -16,6 +15,12 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * Klass som tar Oauth1-uppgifter för att koppla upp sig mot Twitters API via en HTTP-förbindelse.
+ * Efter ett Twitter4Johan-objekt skapats går det att hämta:
+ *  - Twittertaggar och namn från de medlemmar som befinner sig i listan.
+ *  - Tweets där en viss användare är taggad.
+ */
 public class Twitter4Johan {
     private String consumerKeyStr;
     private String consumerSecretStr;
@@ -23,6 +28,13 @@ public class Twitter4Johan {
     private String accessTokenSecretStr;
     private OAuthConsumer oAuthConsumer;
 
+    /**
+     * Konstruktor.
+     * @param consumerKeyStr Twitter consumer key.
+     * @param consumerSecretStr Twitter consumer secret.
+     * @param accessTokenStr Twitter access token.
+     * @param accessTokenSecretStr Twitter token secret.
+     */
     public Twitter4Johan(String consumerKeyStr, String consumerSecretStr, String accessTokenStr, String accessTokenSecretStr){
         this.consumerKeyStr = consumerKeyStr;
         this.consumerSecretStr = consumerSecretStr;
@@ -32,6 +44,15 @@ public class Twitter4Johan {
         oAuthConsumer.setTokenWithSecret(accessTokenStr, accessTokenSecretStr);
     }
 
+    /**
+     * Gör en HTTP-get request mot en uri och returnerar svaret.
+     * @param uri En URI till en api.
+     * @return String innehållande svaret från servern.
+     * @throws OAuthCommunicationException
+     * @throws OAuthExpectationFailedException
+     * @throws OAuthMessageSignerException
+     * @throws IOException
+     */
     private String get(String uri) throws OAuthCommunicationException, OAuthExpectationFailedException, OAuthMessageSignerException, IOException {
         HttpGet req = new HttpGet(uri);
         oAuthConsumer.sign(req);
@@ -40,6 +61,15 @@ public class Twitter4Johan {
         return IOUtils.toString(httpResponse.getEntity().getContent());
     }
 
+    /**
+     *
+     * @param listId Twitter list-id.
+     * @return List <String[]>. Arr[0] = Screen Name, Arr[1] = Name.
+     * @throws OAuthExpectationFailedException
+     * @throws OAuthCommunicationException
+     * @throws OAuthMessageSignerException
+     * @throws IOException
+     */
     public List<String[]> getTwitterTags(String listId) throws OAuthExpectationFailedException, OAuthCommunicationException, OAuthMessageSignerException, IOException {
         ArrayList<String[]> tags = new ArrayList<String[]>();
         JSONObject jo = new JSONObject(get("https://api.twitter.com/1.1/lists/members.json?list_id=" + listId +"&count=300&skip_status=true"));
@@ -50,6 +80,15 @@ public class Twitter4Johan {
         return tags;
     }
 
+    /**
+     * Tar ett Twitter-användarnamn och returnerar en lista av Tweets i form av Status-objekt.
+     * @param username
+     * @return List<Status> List of tweets.
+     * @throws OAuthExpectationFailedException
+     * @throws OAuthCommunicationException
+     * @throws OAuthMessageSignerException
+     * @throws IOException
+     */
     public List<Status> getTweets(String username) throws OAuthExpectationFailedException, OAuthCommunicationException, OAuthMessageSignerException, IOException {
         ArrayList<Status> tweets = new ArrayList<Status>();
         JSONObject jo = new JSONObject(get("https://api.twitter.com/1.1/search/tweets.json?q=%40" + username));
