@@ -47,10 +47,16 @@ public class Runner {
             return "Error code: 400; Bad request code (No single member of parlament available, try /ledamoter)";
         });
 
+        get("/ledamot/*", (req, res) -> {
+            res.type("application/json");
+            res.status(400);
+            return "Error code: 400; Bad request code (No single member of parlament available, try /ledamoter)";
+        });
+
         //Skapar metoden get för URL/tweets/@<twittertag> som hämtar tweets utifrån en viss tag.
         get("/tweets/*", (req, res) -> {
             String tag = req.splat()[0];
-            if (tag.charAt(0) == '@' && tag.length() > 1){
+            if (tag.length() > 1 && tag.charAt(0) == '@'){
                 res.type("application/json");
                 res.status(200);
                 return Importer.getTweets(tag.substring(1));
@@ -61,7 +67,7 @@ public class Runner {
         });
         get("/tweet/*", (req, res) -> {
             String tag = req.splat()[0];
-            if (tag.charAt(0) == '@' && tag.length() > 1){
+            if (tag.length() > 1 && tag.charAt(0) == '@'){
                 res.status(400);
                 return "Error code: 400; Bad request code (No single tweet available try (/tweets/@a_Twitter_tag)).";
             }else{
